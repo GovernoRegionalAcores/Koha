@@ -1413,6 +1413,8 @@ sub merge {
     my $auth_tag_to_report_from = $authtypefrom ? $authtypefrom->auth_tag_to_report : '';
     my $auth_tag_to_report_to   = $authtypeto ? $authtypeto->auth_tag_to_report : '';
 
+    return 0 if !$authto;
+
     my @record_to;
     @record_to = $MARCto->field($auth_tag_to_report_to)->subfields() if $auth_tag_to_report_to && $MARCto && $MARCto->field($auth_tag_to_report_to);
     # Exceptional: If MARCto and authtypeto exist but $auth_tag_to_report_to
